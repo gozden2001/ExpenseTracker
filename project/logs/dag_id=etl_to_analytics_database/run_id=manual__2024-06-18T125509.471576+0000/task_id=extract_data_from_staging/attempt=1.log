@@ -1,0 +1,41 @@
+[2024-06-18T12:55:10.369+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-18T12:55:10.385+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_to_analytics_database.extract_data_from_staging manual__2024-06-18T12:55:09.471576+00:00 [queued]>
+[2024-06-18T12:55:10.392+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_to_analytics_database.extract_data_from_staging manual__2024-06-18T12:55:09.471576+00:00 [queued]>
+[2024-06-18T12:55:10.392+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-06-18T12:55:10.401+0000] {taskinstance.py:2330} INFO - Executing <Task(MySqlOperator): extract_data_from_staging> on 2024-06-18 12:55:09.471576+00:00
+[2024-06-18T12:55:10.406+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=5913) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-18T12:55:10.407+0000] {standard_task_runner.py:63} INFO - Started process 5914 to run task
+[2024-06-18T12:55:10.407+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_to_analytics_database', 'extract_data_from_staging', 'manual__2024-06-18T12:55:09.471576+00:00', '--job-id', '733', '--raw', '--subdir', 'DAGS_FOLDER/batch-processing_dag.py', '--cfg-path', '/tmp/tmpe0z1ttlj']
+[2024-06-18T12:55:10.408+0000] {standard_task_runner.py:91} INFO - Job 733: Subtask extract_data_from_staging
+[2024-06-18T12:55:10.438+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_to_analytics_database.extract_data_from_staging manual__2024-06-18T12:55:09.471576+00:00 [running]> on host 195daacf7793
+[2024-06-18T12:55:10.493+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_to_analytics_database' AIRFLOW_CTX_TASK_ID='extract_data_from_staging' AIRFLOW_CTX_EXECUTION_DATE='2024-06-18T12:55:09.471576+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-18T12:55:09.471576+00:00'
+[2024-06-18T12:55:10.494+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-18T12:55:10.502+0000] {sql.py:276} INFO - Executing: 
+    SELECT * FROM roles;
+    SELECT * FROM users;
+    SELECT * FROM expense;
+    SELECT * FROM income;
+    SELECT * FROM expense_group;
+    SELECT * FROM income_group;
+    
+[2024-06-18T12:55:10.508+0000] {base.py:84} INFO - Using connection ID 'mysql_localhost' for task execution.
+[2024-06-18T12:55:10.512+0000] {base.py:84} INFO - Using connection ID 'mysql_localhost' for task execution.
+[2024-06-18T12:55:10.517+0000] {sql.py:487} INFO - Running statement: 
+    SELECT * FROM roles;
+    SELECT * FROM users;
+    SELECT * FROM expense;
+    SELECT * FROM income;
+    SELECT * FROM expense_group;
+    SELECT * FROM income_group;
+    , parameters: None
+[2024-06-18T12:55:10.518+0000] {sql.py:496} INFO - Rows affected: 2
+[2024-06-18T12:55:10.520+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-18T12:55:10.533+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_to_analytics_database, task_id=extract_data_from_staging, run_id=manual__2024-06-18T12:55:09.471576+00:00, execution_date=20240618T125509, start_date=20240618T125510, end_date=20240618T125510
+[2024-06-18T12:55:10.581+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-06-18T12:55:10.587+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/models/baseoperator.py:1297: AirflowProviderDeprecationWarning: Call to deprecated class MySqlOperator. (Please use `***.providers.common.sql.operators.sql.SQLExecuteQueryOperator`.Also, you can provide `hook_params={'schema': <database>}`.)
+  result = cls.__new__(cls)
+
+[2024-06-18T12:55:10.598+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-06-18T12:55:10.599+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

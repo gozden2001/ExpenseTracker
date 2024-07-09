@@ -1,0 +1,28 @@
+[2024-06-18T12:53:03.835+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-18T12:53:03.851+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_mysql_operator_v04.insert_into_table manual__2024-06-18T12:53:00.599961+00:00 [queued]>
+[2024-06-18T12:53:03.857+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_mysql_operator_v04.insert_into_table manual__2024-06-18T12:53:00.599961+00:00 [queued]>
+[2024-06-18T12:53:03.857+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2024-06-18T12:53:03.866+0000] {taskinstance.py:2330} INFO - Executing <Task(MySqlOperator): insert_into_table> on 2024-06-18 12:53:00.599961+00:00
+[2024-06-18T12:53:03.870+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=5883) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-18T12:53:03.871+0000] {standard_task_runner.py:63} INFO - Started process 5884 to run task
+[2024-06-18T12:53:03.871+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dag_with_mysql_operator_v04', 'insert_into_table', 'manual__2024-06-18T12:53:00.599961+00:00', '--job-id', '732', '--raw', '--subdir', 'DAGS_FOLDER/mysql_dag.py', '--cfg-path', '/tmp/tmpz8d1f00j']
+[2024-06-18T12:53:03.872+0000] {standard_task_runner.py:91} INFO - Job 732: Subtask insert_into_table
+[2024-06-18T12:53:03.899+0000] {task_command.py:426} INFO - Running <TaskInstance: dag_with_mysql_operator_v04.insert_into_table manual__2024-06-18T12:53:00.599961+00:00 [running]> on host 195daacf7793
+[2024-06-18T12:53:03.952+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_with_mysql_operator_v04' AIRFLOW_CTX_TASK_ID='insert_into_table' AIRFLOW_CTX_EXECUTION_DATE='2024-06-18T12:53:00.599961+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-18T12:53:00.599961+00:00'
+[2024-06-18T12:53:03.953+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-18T12:53:03.961+0000] {sql.py:276} INFO - Executing: 
+            insert into dag_runs (dt, dag_id) values ('2024-06-18', 'dag_with_mysql_operator_v04')
+        
+[2024-06-18T12:53:03.967+0000] {base.py:84} INFO - Using connection ID 'mysql_localhost' for task execution.
+[2024-06-18T12:53:03.971+0000] {base.py:84} INFO - Using connection ID 'mysql_localhost' for task execution.
+[2024-06-18T12:53:03.977+0000] {sql.py:487} INFO - Running statement: 
+            insert into dag_runs (dt, dag_id) values ('2024-06-18', 'dag_with_mysql_operator_v04')
+        , parameters: None
+[2024-06-18T12:53:03.978+0000] {sql.py:496} INFO - Rows affected: 1
+[2024-06-18T12:53:03.982+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-18T12:53:03.987+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=dag_with_mysql_operator_v04, task_id=insert_into_table, run_id=manual__2024-06-18T12:53:00.599961+00:00, execution_date=20240618T125300, start_date=20240618T125303, end_date=20240618T125303
+[2024-06-18T12:53:04.004+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-06-18T12:53:04.014+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-18T12:53:04.016+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

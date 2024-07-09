@@ -1,0 +1,59 @@
+[2024-06-18T12:22:59.621+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-18T12:22:59.638+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_with_mysql_operator_v03.create_table scheduled__2021-12-31T00:00:00+00:00 [queued]>
+[2024-06-18T12:22:59.644+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_with_mysql_operator_v03.create_table scheduled__2021-12-31T00:00:00+00:00 [queued]>
+[2024-06-18T12:22:59.644+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2024-06-18T12:22:59.654+0000] {taskinstance.py:2330} INFO - Executing <Task(MySqlOperator): create_table> on 2021-12-31 00:00:00+00:00
+[2024-06-18T12:22:59.658+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=5443) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-18T12:22:59.660+0000] {standard_task_runner.py:63} INFO - Started process 5448 to run task
+[2024-06-18T12:22:59.660+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dag_with_mysql_operator_v03', 'create_table', 'scheduled__2021-12-31T00:00:00+00:00', '--job-id', '713', '--raw', '--subdir', 'DAGS_FOLDER/mysql_dag.py', '--cfg-path', '/tmp/tmpmc0gjtup']
+[2024-06-18T12:22:59.661+0000] {standard_task_runner.py:91} INFO - Job 713: Subtask create_table
+[2024-06-18T12:22:59.693+0000] {task_command.py:426} INFO - Running <TaskInstance: dag_with_mysql_operator_v03.create_table scheduled__2021-12-31T00:00:00+00:00 [running]> on host 195daacf7793
+[2024-06-18T12:22:59.755+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_with_mysql_operator_v03' AIRFLOW_CTX_TASK_ID='create_table' AIRFLOW_CTX_EXECUTION_DATE='2021-12-31T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2021-12-31T00:00:00+00:00'
+[2024-06-18T12:22:59.756+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-18T12:22:59.765+0000] {sql.py:276} INFO - Executing: 
+            create table if not exists dag_runs (
+                dt date,
+                dag_id character varying,
+                primary key (dt, dag_id)
+            )
+        
+[2024-06-18T12:22:59.772+0000] {base.py:84} INFO - Using connection ID 'mysql_localhost' for task execution.
+[2024-06-18T12:22:59.777+0000] {base.py:84} INFO - Using connection ID 'mysql_localhost' for task execution.
+[2024-06-18T12:22:59.783+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-18T12:22:59.784+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/operators/sql.py", line 282, in execute
+    output = hook.run(
+             ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/hooks/sql.py", line 431, in run
+    with self._create_autocommit_connection(autocommit) as conn:
+  File "/usr/local/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/hooks/sql.py", line 551, in _create_autocommit_connection
+    with closing(self.get_conn()) as conn:
+                 ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/mysql/hooks/mysql.py", line 196, in get_conn
+    return MySQLdb.connect(**conn_config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/MySQLdb/__init__.py", line 121, in Connect
+    return Connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/MySQLdb/connections.py", line 195, in __init__
+    super().__init__(*args, **kwargs2)
+MySQLdb.OperationalError: (2002, "Can't connect to server on 'mysql' (115)")
+[2024-06-18T12:22:59.791+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_with_mysql_operator_v03, task_id=create_table, run_id=scheduled__2021-12-31T00:00:00+00:00, execution_date=20211231T000000, start_date=20240618T122259, end_date=20240618T122259
+[2024-06-18T12:22:59.801+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 713 for task create_table ((2002, "Can't connect to server on 'mysql' (115)"); 5448)
+[2024-06-18T12:22:59.833+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-18T12:22:59.839+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
